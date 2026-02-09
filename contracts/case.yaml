@@ -1,0 +1,38 @@
+openapi: 3.0.3
+info:
+  title: Case Service API
+  version: 1.0.0
+
+paths:
+  /api/v1/cases/{case_id}:
+    get:
+      summary: Get case by ID
+      responses:
+        '200':
+          description: Case found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Case'
+        '404':
+          description: Case not found
+
+components:
+  schemas:
+    Case:
+      type: object
+      required: [id, referrer_id, status, created_at]
+      properties:
+        id:
+          type: string
+        referrer_id:
+          type: string
+        expert_id:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum: [draft, submitted, assigned, in_progress, completed]
+        created_at:
+          type: string
+          format: date-time
