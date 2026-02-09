@@ -35,3 +35,10 @@
 - All exceptions inherit from MEDirectError (in exceptions/base.py)
 - Services raise domain exceptions, not generic Exception
 - Never expose internal details in error messages
+
+## Override Protocol
+If a rule in this file conflicts with a specific, justified requirement:
+1. The developer can instruct Claude Code to proceed anyway
+2. Add a code comment: # OVERRIDE: [rule] — [reason] — [your name]
+3. Note it in the PR description
+4. The architectural tests in CI are the final authority — if they pass, you're fine
